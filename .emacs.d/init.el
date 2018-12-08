@@ -1,13 +1,11 @@
 
-(require 'package)
-(setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
-(package-initialize)
+(add-to-list 'load-path "/root/.emacs.d/lisp/dart-mode/")
+(add-to-list 'load-path "/root/.emacs.d/lisp/dash.el/")
+(add-to-list 'load-path "/root/.emacs.d/lisp/s.el/")
 
-(unless (package-installed-p 'dart-mode)
-    (package-refresh-contents)
-    (package-install 'dart-mode))
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+(require 'subr-x)
+(require 'dart-mode)
 
 (setq dart-enable-analysis-server t)
 
