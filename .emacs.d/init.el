@@ -11,3 +11,12 @@
 
 (setq dart-debug t)
 (toggle-debug-on-error)
+
+(add-hook 'after-init-hook
+          (lambda ()
+            (unless noninteractive
+              (view-echo-area-messages))
+            (find-file "main.dart")
+            (when (search-forward-regexp "^[\s]*void initState() {$" nil t)
+              (goto-char (point-at-eol))
+              (insert "\n"))))
